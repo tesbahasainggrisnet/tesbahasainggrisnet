@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sertifikat Restu Eka Ramdani</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    background: #f0f0f0;
+    min-height: 100vh;
+    padding: 16px;
+    color: #1a1a1a;
+  }
+
+  /* ── OUTER CARD (white, rounded, shadow) ── */
+  .outer-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 20px 32px;
+    max-width: 480px;
+    margin: 0 auto;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  /* ── LOGO SECTION ── */
+  .logo-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .logo-section img {
+    width: 120px;
+    margin-bottom: 1px;
+  }
+
+  /* ── NO SERTIFIKAT BADGE ── */
+  .cert-badge {
+    display: inline-block;
+    background: #eef2ff;
+    color: #2563eb;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 22px;
+    border-radius: 10px;
+    margin: 14px auto 14px;
+    display: block;
+    text-align: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── TITLE ── */
+  .cert-title {
+    text-align: center;
+    font-size: 17px;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  /* ── NAME ── */
+  .cert-name {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    color: #111;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+    padding-left: 2px;
+  }
+
+  /* ── INFO CARD (grey bg) ── */
+  .info-card {
+    background: #f6f6f6;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+  }
+  .info-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 4px 12px;
+    margin-bottom: 10px;
+  }
+  .info-row:last-child { margin-bottom: 0; }
+  .info-label {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #888;
+  }
+  .info-value {
+    font-size: 13.5px;
+    color: #111;
+    line-height: 1.5;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+    margin: 20px 0 16px;
+  }
+
+  /* ── SECTION TEXT ── */
+  .section-text {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  /* ── SCORE BIG CARD ── */
+  .score-big-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 18px 18px 14px;
+    margin-bottom: 16px;
+  }
+  .score-big-number {
+    font-size: 44px;
+    font-weight: 800;
+    color: #111;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .score-tag {
+    display: inline-block;
+    background: #e8ecf8;
+    color: #333;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+
+  /* ── LEVEL DESC ── */
+  .level-desc {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  /* ── SCORE BARS ── */
+  .score-bars { margin-bottom: 18px; }
+  .score-row {
+    display: grid;
+    grid-template-columns: 120px 1fr 36px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .score-row-label {
+    font-size: 13.5px;
+    color: #333;
+    line-height: 1.4;
+  }
+  .bar-track {
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s ease;
+  }
+  .bar-blue  { background: linear-gradient(90deg, #2563eb, #60a5fa); }
+  .bar-yellow{ background: linear-gradient(90deg, #f59e0b, #fcd34d); }
+  .bar-green { background: linear-gradient(90deg, #059669, #34d399); }
+  .bar-red   { background: linear-gradient(90deg, #dc2626, #f87171); }
+
+  .score-num {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+    text-align: right;
+  }
+
+  /* ── DESCRIPTORS LABEL ── */
+  .descriptors-label {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+  }
+
+  /* ── ACCORDION ITEMS ── */
+  .accordion-item {
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .accordion-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: #22c55e;
+    border-radius: 12px 0 0 12px;
+  }
+  .accordion-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+    padding-left: 6px;
+    flex: 1;
+    line-height: 1.4;
+  }
+  .accordion-icon {
+    font-size: 20px;
+    color: #888;
+    font-weight: 300;
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
+  .accordion-body {
+    display: none;
+    padding: 10px 16px 14px 22px;
+    font-size: 13.5px;
+    color: #444;
+    line-height: 1.6;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 10px;
+  }
+  .accordion-item.open .accordion-body { display: block; }
+  .accordion-item.open .accordion-icon::after { content: '−'; }
+  .accordion-item:not(.open) .accordion-icon::after { content: '+'; }
+
+  /* ── DATE CARD ── */
+  .date-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 16px 0;
+  }
+  .date-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .date-value {
+    font-size: 16px;
+    color: #111;
+    margin-bottom: 14px;
+  }
+  .date-value:last-child { margin-bottom: 0; }
+
+  /* ── NOTES CARD ── */
+  .notes-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-top: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .notes-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: #2563eb;
+    border-radius: 12px 0 0 12px;
+  }
+  .notes-card p {
+    font-size: 13px;
+    color: #e53e3e;
+    line-height: 1.7;
+    padding-left: 6px;
+  }
+  .notes-card p strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #e53e3e;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<div class="outer-card">
+
+  <!-- LOGO -->
+  <div class="logo-section">
+    <img src="logo.png"/>
+  </div>
+
+  <!-- CERT BADGE -->
+  <div class="cert-badge">No. Sertifikat : 26/00226</div>
+
+  <!-- TITLE -->
+  <div class="cert-title">
+    TOEFL ITP Online Prediction —<br/>Certificate of Achievement
+  </div>
+
+  <!-- NAME -->
+  <div class="cert-name">RESTU EKA RAMDANI</div>
+
+  <!-- INFO CARD -->
+  <div class="info-card">
+    <div class="info-row">
+      <span class="info-label">Place, Date of Birth</span>
+      <span class="info-value">Bandung, 11 November 1988</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Address</span>
+      <span class="info-value">Jl.kopo Sayati, Gg Hj Syukur, Rt 01 Rw 05 Kecamatan Margahayu, Kabupaten Bandung, Jawa Barat</span>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- SCORES SUBTITLE -->
+  <p class="section-text">Achieved the following scores in the Online TOEFL ITP Prediction Test</p>
+
+  <!-- BIG SCORE CARD -->
+  <div class="score-big-card">
+    <div class="score-big-number">453</div>
+    <span class="score-tag">Test Result</span>
+  </div>
+
+  <!-- LEVEL DESC -->
+  <p class="level-desc">Understands short, routine language about familiar areas and manages simple exchanges.</p>
+
+  <!-- SCORE BARS -->
+  <div class="score-bars">
+    <div class="score-row">
+      <span class="score-row-label">Listening Comprehension</span>
+      <div class="bar-track"><div class="bar-fill bar-blue" style="width:0%" data-width="55%"></div></div>
+      <span class="score-num">51</span>
+    </div>
+    <div class="score-row">
+      <span class="score-row-label">Structure &amp; Written Expression</span>
+      <div class="bar-track"><div class="bar-fill bar-yellow" style="width:0%" data-width="39%"></div></div>
+      <span class="score-num">39</span>
+    </div>
+    <div class="score-row">
+      <span class="score-row-label">Reading Comprehension</span>
+      <div class="bar-track"><div class="bar-fill bar-green" style="width:0%" data-width="46%"></div></div>
+      <span class="score-num">46</span>
+    </div>
+    <div class="score-row">
+      <span class="score-row-label">Total Score</span>
+      <div class="bar-track"><div class="bar-fill bar-red" style="width:0%" data-width="48%"></div></div>
+      <span class="score-num">453</span>
+    </div>
+  </div>
+
+  <!-- DESCRIPTORS LABEL -->
+  <div class="descriptors-label">Score Descriptors (ETS-based)</div>
+
+  <!-- DATE CARD -->
+  <div class="date-card">
+    <div class="date-label">TEST DATE</div>
+    <div class="date-value">10 June 2026</div>
+    <div class="date-label">VALID UNTIL</div>
+    <div class="date-value">10 June 2028</div>
+  </div>
+
+  <!-- NOTES CARD -->
+  <div class="notes-card">
+    <p>
+      <strong>Notes:</strong>
+      - TOEFL-ITP is a registered trademark of Educational Testing Service (ETS). No affiliation between ETS and Bahasa Inggris Net is applied<br/>
+      - Online TOEFL-ITP Prediction Test conducted by Bahasa Inggris Net under the supervision of JClub Education : NPSN K9997235
+    </p>
+  </div>
+
+</div>
+
+<script>
+  // Animate progress bars on load
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.querySelectorAll('.bar-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width;
+      });
+    }, 300);
+  });
+
+  // Accordion toggle
+  function toggleAccordion(el) {
+    el.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
